@@ -1,6 +1,10 @@
 require 'prawn/layout'
 
-font "Arial"
+  pdf.font_families.update(
+   "HelveticaFont" => { :bold        => "#{Rails.root.to_s}/public/HelveticaWorld-Bold.ttf",
+                    :normal      => "#{Rails.root.to_s}/public/HelveticaWorld-Regular.ttf" })
+
+font "HelveticaFont"
 im = "#{Rails.root.to_s}/public/assets/#{Spree::PrintInvoice::Config[:print_invoice_logo_path]}"
 
 image im , :at => [0,720] #, :scale => 0.35
@@ -15,11 +19,11 @@ fill_color "000000"
 
 move_down 4
 
-font "Helvetica",  :size => 9,  :style => :bold
+font "HelveticaFont",  :size => 9,  :style => :bold
 text "#{I18n.t(:order_number)} #{@order.number}", :align => :right
 
 move_down 2
-font "Helvetica", :size => 9
+font "HelveticaFont", :size => 9
 text "#{I18n.l @order.completed_at.to_date}", :align => :right
 
 
