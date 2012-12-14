@@ -1,11 +1,11 @@
 require 'prawn/layout'
 
   pdf.font_families.update(
-   "UnicefInoviceFont" => { :bold        => "#{Rails.root.to_s}/public/arial_bold.ttf",
-                    :normal      => "#{Rails.root.to_s}/public/arial.ttf" })
+   "UnicefInoviceFont" => { :bold        => "#{Rails.root.to_s}/public/pdf_font_bold.ttf",
+                    :normal      => "#{Rails.root.to_s}/public/pdf_font.ttf" })
 
 font "UnicefInoviceFont"
-im = "#{Rails.root.to_s}/public/assets/#{Spree::PrintInvoice::Config[:print_invoice_logo_path]}"
+im = "#{Rails.root.to_s}/public/#{Spree::PrintInvoice::Config[:print_invoice_logo_path]}"
 
 image im , :at => [0,720] #, :scale => 0.35
 
