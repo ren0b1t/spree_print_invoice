@@ -50,7 +50,7 @@ bounding_box [0,cursor], :width => 540, :height => 430 do
       :align => @align
   end
 
-  font "HelveticaFont", :size => 9
+  font "UnicefInoviceFont", :size => 9
 
   bounding_box [20,cursor  ], :width => 400 do
     render :partial => "bye" unless @hide_prices
