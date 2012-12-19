@@ -14,7 +14,7 @@ bounding_box [0,600], :width => 540 do
     :position           => :center,
     :border_width => 0.5,
     :vertical_padding   => 2,
-    :horizontal_padding => 7,
+    :horizontal_padding => 6,
     :font_size => 9,
     :border_style => :underline_header,
     :column_widths => { 0 => 270, 1 => 270 }
@@ -25,26 +25,18 @@ bounding_box [0,600], :width => 540 do
   bounding_box [0,0], :width => 540 do
     move_down 2
     if anonymous and Spree::Config[:suppress_anonymous_address]
-      data2 = [[" "," "]] * 7
+      data2 = [[" "," "]] * 6
     else
 
-        unless bill_address.company.nil?
-          data2 == [["#{bill_address.company}", "#{ship_address.company}"],
-                                  [bill_address.oib, ship_address.oib]]
-          data2 << [["#{bill_address.firstname} #{bill_address.lastname}", "#{ship_address.firstname} #{ship_address.lastname}"],
-                        [bill_address.address1, ship_address.address1]]
-        else
-          data2 = [["#{bill_address.firstname} #{bill_address.lastname}", "#{ship_address.firstname} #{ship_address.lastname}"],
-                        [bill_address.address1, ship_address.address1]]
-        end
-
-        data2 << [bill_address.address2, ship_address.address2] unless
-                    bill_address.address2.blank? and ship_address.address2.blank?
-        data2 << ["#{@order.bill_address.zipcode} #{@order.bill_address.city}  #{(@order.bill_address.state ? @order.bill_address.state.abbr : "")} ",
-                      "#{@order.ship_address.zipcode} #{@order.ship_address.city} #{(@order.ship_address.state ? @order.ship_address.state.abbr : "")}"]
-        data2 << ["Hrvatska", "Hrvatska"]
-        data2 << [bill_address.phone, ship_address.phone]
-        data2 << ["Način dostave: " +  @order.shipping_method.try(:name), "Način plaćanja: " + @order.payments.first.payment_method.name]
+      data2 = [["#{bill_address.firstname} #{bill_address.lastname}", "#{ship_address.firstname} #{ship_address.lastname}"],
+                    [bill_address.address1, ship_address.address1]]
+      data2 << [bill_address.address2, ship_address.address2] unless
+                bill_address.address2.blank? and ship_address.address2.blank?
+      data2 << ["#{@order.bill_address.zipcode} #{@order.bill_address.city}  #{(@order.bill_address.state ? @order.bill_address.state.abbr : "")} ",
+                  "#{@order.ship_address.zipcode} #{@order.ship_address.city} #{(@order.ship_address.state ? @order.ship_address.state.abbr : "")}"]
+      data2 << ["Hrvatska", "Hrvatska"]
+      data2 << [bill_address.phone, ship_address.phone]
+      data2 << ["Način dostave: " +  @order.shipping_method.try(:name), "Način plaćanja: " + @order.payments.first.payment_method.name]
 
     end
     

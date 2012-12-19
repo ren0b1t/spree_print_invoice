@@ -33,15 +33,6 @@ move_down 30
 
 render :partial => "line_items_box"
 
-move_down 4
-
-font "UnicefInoviceFont",  :size => 9,  :style => :bold
-text "#{I18n.t(:order_number)} #{@order.number}", :align => :right
-
-move_down 2
-font "UnicefInoviceFont", :size => 9
-text "#{I18n.l @order.completed_at.to_date}", :align => :right
-
 move_down 8
 
 # Footer

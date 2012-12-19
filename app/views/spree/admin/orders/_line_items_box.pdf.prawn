@@ -56,7 +56,7 @@ bounding_box [0,cursor], :width => 540, :height => 430 do
     render :partial => "bye" unless @hide_prices
   end
 
-  render :partial => "totals"
+  render :partial => "totals" unless @hide_prices
   
   move_down 2
 
